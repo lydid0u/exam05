@@ -12,6 +12,7 @@ class ASpell;
 
 class SpellBook {
 	private :
+	std::map<std::string, ASpell*> spellBook;
 
 	public : 
 	SpellBook();
@@ -20,7 +21,6 @@ class SpellBook {
 	void learnSpell(ASpell * SpellPtr);
 	void forgetSpell(std::string const& spellName);
 	ASpell * createSpell(std::string const& spellName);
-	std::map<std::string, ASpell*> spellBook;
 
 	ASpell* getSpell(const std::string& spellName);
 };

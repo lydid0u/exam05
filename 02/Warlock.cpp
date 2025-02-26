@@ -33,10 +33,6 @@ void Warlock::forgetSpell(std::string spellName) {
 }
 
 void Warlock::launchSpell(std::string spellName, ATarget& aTargetRef) {
-	std::map<std::string, ASpell*>::iterator it = book.spellBook.find(spellName);
-	{
-		if (it->second == NULL)
-			return ;
-		std::cout << aTargetRef.getType() << " has been " << it->second->getEffects() << std::endl;
-	}
+	if (book.createSpell(spellName))
+		book.createSpell(spellName)->launch(aTargetRef);
 }
