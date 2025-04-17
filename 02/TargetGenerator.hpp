@@ -10,7 +10,7 @@ class ATarget;
 
 class TargetGenerator {
 	private :
-		std::map<std::string, ATarget *> targetGenerator;
+		std::map<std::string, ATarget *> targetGen;
 
 	public : 
 	TargetGenerator();

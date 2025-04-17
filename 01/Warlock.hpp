@@ -1,5 +1,3 @@
-
-
 #ifndef WARLOCK_HPP
 # define WARLOCK_HPP
 
@@ -7,7 +5,6 @@
 #include <map>
 #include "ASpell.hpp"
 #include "ATarget.hpp"
-
 
 class Warlock {
 	private :

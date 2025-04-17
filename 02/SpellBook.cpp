@@ -10,14 +10,15 @@ void SpellBook::learnSpell(ASpell * SpellPtr) {
 		spellBook[SpellPtr->getName()] = SpellPtr;
 }
 
-void SpellBook::forgetSpell(std::string const& spellName) {
-	std::map<std::string, ASpell*>::iterator it = spellBook.find(spellName);
-		it->second = NULL;
+void SpellBook::forgetSpell(std::string const & SpellName) {
+	std::map<std::string, ASpell *>::iterator it = spellBook.find(SpellName);
+	if (it != spellBook.end() && it->second != NULL)
+		it->second == NULL;
 }
 
-ASpell * SpellBook::createSpell(std::string const& spellName) {
-	std::map<std::string, ASpell*>::iterator it = spellBook.find(spellName);
-	if (it != spellBook.end())
-		return it->second->clone();
-	return NULL;
+ASpell* SpellBook::createSpell(std::string const &  SpellName) {
+	std::map<std::string, ASpell *>::iterator it = spellBook.find(SpellName);
+	if (it != spellBook.end() && it->second != NULL)
+		return (it->second->clone());
+	return (NULL);
 }

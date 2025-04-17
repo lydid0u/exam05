@@ -5,19 +5,20 @@ TargetGenerator::TargetGenerator() {};
 
 TargetGenerator::~TargetGenerator() {}
 
-void TargetGenerator::learnTargetType(ATarget * TargetTypePtr) {
-	if (TargetTypePtr)
-		targetGenerator[TargetTypePtr->getType()] = TargetTypePtr;
+void	TargetGenerator::learnTargetType(ATarget *TargetTypeptr) {
+	if (TargetTypeptr)
+		targetGen[TargetTypeptr->getType()] = TargetTypeptr;
 }
 
-void TargetGenerator::forgetTargetType(std::string const& TargetType) {
-	std::map<std::string, ATarget*>::iterator it = targetGenerator.find(TargetType);
+void	TargetGenerator::forgetTargetType(std::string const & TargetTypeName) {
+	std::map<std::string, ATarget*>::iterator it = targetGen.find(TargetTypeName);
+	if (it != targetGen.end())
 		it->second = NULL;
 }
 
-ATarget * TargetGenerator::createTarget(std::string const& TargetType) {
-	std::map<std::string, ATarget*>::iterator it = targetGenerator.find(TargetType);
-	if (it != targetGenerator.end())
-		return it->second->clone();
-	return NULL;
+ATarget *TargetGenerator::createTarget(std::string const & TargetTypeName){
+	std::map<std::string, ATarget*>::iterator it = targetGen.find(TargetTypeName);
+	if (it != targetGen.end() && it->second != NULL)
+		return (it->second->clone());
+	return (NULL);
 }

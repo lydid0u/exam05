@@ -12,7 +12,6 @@ void 	Warlock::introduce() const {
 	std::cout << this->_name << ": I am " << this->_name << ", " << this->_title << "!" <<  std::endl;
 }
 
-
 const std::string& Warlock::getName() const {
 	return (_name);
 }
@@ -25,21 +24,19 @@ void Warlock::setTitle(const std::string& title) {
 	_title = title;
 }
 
-void Warlock::learnSpell(ASpell * SpellPtr) {
-	if (SpellPtr)
-		spellBook[SpellPtr->getName()] = SpellPtr;
+void	Warlock::learnSpell(ASpell *aspellptr) {
+	if (aspellptr)
+		spellBook[aspellptr->getName()] = aspellptr;
 }
 
-void Warlock::forgetSpell(std::string spellName) {
-	std::map<std::string, ASpell*>::iterator it = spellBook.find(spellName);
+void	Warlock::forgetSpell(std::string SpellName) {
+	std::map<std::string, ASpell*>::iterator it = spellBook.find(SpellName);
+	if (it != spellBook.end())
 		it->second = NULL;
 }
 
-void Warlock::launchSpell(std::string spellName, ATarget& aTargetRef) {
-	std::map<std::string, ASpell*>::iterator it = spellBook.find(spellName);
-	{
-		if (it->second == NULL)
-			return ;
-		std::cout << aTargetRef.getType() << " has been " << it->second->getEffects() << std::endl;
-	}
+void	Warlock::launchSpell(std::string SpellName, ATarget & atargetref) {
+	std::map<std::string, ASpell*>::iterator it = spellBook.find(SpellName);
+	if (it != spellBook.end() && it->second != NULL)
+		it->second->launch(atargetref);
 }
